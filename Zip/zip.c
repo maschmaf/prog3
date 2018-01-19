@@ -169,14 +169,17 @@ int main(void){
     addEle(2,6);
     addEle(1,7);
     addEle(2,8);
+    /*
     printFirstList();
     anfangAnEnde();
     printFirstList();
-    /*
+    */
+    
+    
     zipLists();
     printList();
     freeLists();
     freeList();
-    * */
+    
     return 0;
 }
