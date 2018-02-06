@@ -11,8 +11,9 @@ def bestellungen(file):
     eingefuegt = False
     with open(file) as datei:
         lines = [line.strip().split(";") for line in datei]
-     
+        lines.sort(key=lambda x: x[1])
         for ele in lines:
+            eingefuegt = False
             if ele[0] not in dic:
                 dic[ele[0]] = [(ele[1], int(ele[2]))]
             else:
@@ -21,7 +22,7 @@ def bestellungen(file):
                         dic[ele[0]][index] = (ele[1],int(ele[2]) + preis)
                         eingefuegt = True
                     index += 1
-                
+                    
                 index = 0
                 if eingefuegt is False:
                     dic[ele[0]].append((ele[1],int(ele[2])))
@@ -31,5 +32,13 @@ def bestellungen(file):
                     
         
         
-abc = bestellungen("bestellungen")
-print(abc)
+
+sortiert = sorted(bestellungen("bestellungen").items())
+print(sortiert)
+
+for ele in sortiert:
+    print(str(ele[0]) + ":"+ "".join([" {}({})".format(name,preis) for name,preis in ele[1]]))
+
+
+
+
